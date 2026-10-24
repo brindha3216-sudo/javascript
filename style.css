@@ -1,0 +1,303 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --header-height: 90px;
+    --purple: #7b2cbf;
+    --light-purple: #c77dff;
+    --background: #f8f0ff;
+    --text: #30213d;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    color: var(--text);
+    background: var(--background);
+    overflow: hidden;
+}
+
+header {
+    min-height: var(--header-height);
+    padding: 15px 5%;
+    background: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 2px 10px #00000012;
+    position: relative;
+    z-index: 10;
+}
+
+header h2 {
+    color: var(--purple);
+    font-size: 22px;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text);
+    font-size: 14px;
+    padding: 9px 12px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+nav a:hover,
+nav a.active {
+    background: var(--purple);
+    color: white;
+}
+
+/* Horizontal sliding area */
+#pages {
+    display: flex;
+    width: 100%;
+    height: calc(100dvh - var(--header-height));
+    transform: translateX(0);
+    transition: transform 0.5s ease-in-out;
+}
+
+#pages > section {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 35px 6%;
+}
+
+.section-content {
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+section h1 {
+    color: var(--purple);
+    font-size: clamp(30px, 5vw, 48px);
+    margin-bottom: 15px;
+}
+
+section h2 {
+    color: var(--purple);
+    font-size: 32px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+section h3 {
+    margin-bottom: 15px;
+}
+
+section p {
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    background: var(--purple);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 25px;
+    margin: 8px 8px 8px 0;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #5a189a;
+    transform: translateY(-2px);
+}
+
+.card-row {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.skill-card,
+.project-card {
+    background: white;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px #4a148c12;
+    flex: 1 1 200px;
+    min-width: 0;
+    transition: 0.3s;
+}
+
+.skill-card {
+    text-align: center;
+}
+
+.skill-card h3,
+.project-card h3 {
+    color: var(--purple);
+}
+
+.skill-card:hover,
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px #4a148c20;
+}
+
+.project-card {
+    flex: 1 1 260px;
+}
+
+.project-card p {
+    font-size: 15px;
+}
+
+.project-card .btn {
+    font-size: 14px;
+}
+
+#contact {
+    text-align: center;
+}
+
+#contact a:not(.btn) {
+    color: var(--purple);
+    overflow-wrap: anywhere;
+}
+
+.footer-text {
+    margin-top: 30px;
+    font-size: 14px;
+}
+
+/* Mobile screen */
+@media (max-width: 700px) {
+    :root {
+        --header-height: 125px;
+    }
+
+    header {
+        min-height: var(--header-height);
+        flex-direction: column;
+        justify-content: center;
+        padding: 12px 8px;
+        gap: 8px;
+    }
+
+    header h2 {
+        font-size: 20px;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 3px;
+    }
+
+    nav a {
+        padding: 7px 8px;
+        font-size: 12px;
+    }
+
+    #pages > section {
+        padding: 25px 6%;
+        align-items: flex-start;
+    }
+
+    .section-content {
+        margin: auto 0;
+    }
+
+    section h1 {
+        font-size: 32px;
+    }
+
+    section h2 {
+        font-size: 27px;
+    }
+
+    section p {
+        font-size: 15px;
+    }
+
+    .card-row {
+        gap: 14px;
+    }
+
+    .skill-card,
+    .project-card {
+        flex: 1 1 100%;
+    }
+}
+
+/* Rectangular profile photo on the left */
+#home .home-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    width: 100%;
+    max-width: 1100px;
+}
+
+.profile-photo {
+    flex: 0 0 280px;
+    height: 350px;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 4px solid var(--light-purple);
+    box-shadow: 0 5px 20px #4a148c30;
+}
+
+.profile-photo .home-photo {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+}
+
+#home .home-text {
+    flex: 1;
+    min-width: 0;
+}
+
+@media (max-width: 700px) {
+    #home .home-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .profile-photo {
+        flex: none;
+        width: 180px;
+        height: 230px;
+    }
+
+    #home .home-text {
+        width: 100%;
+    }
+
+    #home .section-content {
+        padding-top: 0;
+    }
+}
